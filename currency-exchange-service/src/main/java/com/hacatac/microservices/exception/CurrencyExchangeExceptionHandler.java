@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 
 public class CurrencyExchangeExceptionHandler extends RuntimeException {
 
-    private HttpStatus status;
-    private String message;
+    private final HttpStatus status;
+    private final String message;
 
     public CurrencyExchangeExceptionHandler(HttpStatus status, String message) {
         this.status = status;
