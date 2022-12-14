@@ -1,5 +1,6 @@
 package com.hacatac.microservices.controller;
 
+import com.hacatac.microservices.config.CurrencyExchangeProxy;
 import com.hacatac.microservices.model.CurrencyConversionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,8 @@ import java.util.HashMap;
 
 @RestController
 public class CurrencyConversionController {
+    @Autowired
+    private CurrencyExchangeProxy proxy;
     @Autowired
    private  CurrencyConversionDto currencyConversionDto;
 
@@ -40,8 +43,27 @@ public class CurrencyConversionController {
                     quantity,
                     currencyConversion.getConversionMultiple(),
                     quantity.multiply(currencyConversion.getConversionMultiple()),
-                    currencyConversion.getEnvironment()
+                    currencyConversion.getEnvironment() + " rest template"
             );
+    }
+
+    @GetMapping("/currency-conversion-feign/from/{from}/to/{to}/quantity/{quantity}")
+    public CurrencyConversionDto calculateCurrencyConversionFeign(@PathVariable String from,
+                                                             @PathVariable String to,
+                                                             @PathVariable BigDecimal quantity
+    ) {
+
+        CurrencyConversionDto currencyConversion = proxy.retrieveExchangeValue(from, to);
+
+        return new CurrencyConversionDto(
+                currencyConversion.getId(),
+                from,
+                to,
+                quantity,
+                currencyConversion.getConversionMultiple(),
+                quantity.multiply(currencyConversion.getConversionMultiple()),
+                currencyConversion.getEnvironment() + " feign"
+        );
     }
 
 
