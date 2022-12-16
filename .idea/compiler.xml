@@ -7,11 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="currency-conversion-service" />
+        <module name="oauth-auth-server" />
+        <module name="spring-cloud-config-server" />
         <module name="api-gateway" />
         <module name="currency-exchange-service" />
-        <module name="currency-conversion-service" />
         <module name="limits-service" />
-        <module name="spring-cloud-config-server" />
         <module name="naming-server" />
       </profile>
     </annotationProcessing>
@@ -21,6 +22,7 @@
       <module name="currency-exchange-service" target="11" />
       <module name="limits-service" target="11" />
       <module name="naming-server" target="11" />
+      <module name="oauth-auth-server" target="11" />
       <module name="spring-cloud-config-server" target="11" />
     </bytecodeTargetLevel>
   </component>
@@ -31,6 +33,7 @@
       <module name="currency-exchange-service" options="-parameters" />
       <module name="limits-service" options="-parameters" />
       <module name="naming-server" options="-parameters" />
+      <module name="oauth-auth-server" options="-parameters" />
       <module name="spring-cloud-config-server" options="-parameters" />
     </option>
   </component>
