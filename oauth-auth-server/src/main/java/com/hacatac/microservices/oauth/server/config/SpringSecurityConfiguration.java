@@ -29,8 +29,8 @@ public class SpringSecurityConfiguration {
 
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-        UserDetails user = User.withUsername("Jordan")
-                .password("password")
+        UserDetails user = User.withUsername("jordan")
+                .password(encoder.encode("password"))
                 .authorities("USER")
                 .build();
         return new InMemoryUserDetailsManager(user);

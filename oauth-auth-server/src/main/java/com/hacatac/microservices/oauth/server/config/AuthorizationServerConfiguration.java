@@ -46,8 +46,8 @@ public class AuthorizationServerConfiguration {
                 .redirectUri("http://127.0.0.1:8100/login/oauth2/code/currency-conversion")
                 .redirectUri("http://127.0.0.1:8100/authorized")
                 .scope(OidcScopes.OPENID)
-                .scope("message.read")
-                .scope("message.write")
+                .scope("read")
+                .scope("write")
                 //.clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
                 .build();
         return new InMemoryRegisteredClientRepository(registeredClient);
